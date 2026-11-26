@@ -1,0 +1,48 @@
+{
+  "opportunity": "kuna-android-binder::onTransact",
+  "test_name": "kuna-android-binder",
+  "binary": "tests/fixtures/android-binder/aarch64-linux-android.so",
+  "selector": "0x4ac4",
+  "func_addr": "0x4ac4",
+  "option": "ndkbinder",
+  "flag": "analysis_ndkbinder",
+  "source_decompiler": "kuna",
+  "change_kind": "analysis-enablement",
+  "default_on": true,
+  "ablation_changed": 0,
+  "parity": "OK",
+  "speed_command": "taskset -c 30 python3 -m scripts.pipeline.timeit --option ndkbinder --binary tests/fixtures/android-binder/aarch64-linux-android.so --selector 0x4ac4 --func-addr 0x4ac4 --repeat 31",
+  "speed_off_ms": 66.39,
+  "speed_on_ms": 65.19,
+  "speed_delta_pct": -1.81,
+  "speed_samples": 31,
+  "speed_budget_pct": 5.0,
+  "speed_within_budget": true,
+  "speed_forced_off": false,
+  "decomp_dbg_sha256": "d83c3c6f1c293b604e6b1aa6698bbb223cf8d777d4c78108c81c80d433c0c5bd",
+  "paired": {
+    "command": "taskset -c 30 python3 -m docs.features.jniregister.speed --option ndkbinder",
+    "pairs": 100,
+    "warmup_pairs": 6,
+    "wall": {
+      "off_ms": 64.157,
+      "on_ms": 63.843,
+      "delta_pct": -0.49,
+      "delta_pct_ci95": [
+        -0.88,
+        -0.2
+      ],
+      "within_budget": true
+    },
+    "child_cpu": {
+      "off_ms": 62.747,
+      "on_ms": 62.579,
+      "delta_pct": -0.27,
+      "delta_pct_ci95": [
+        -0.66,
+        -0.04
+      ],
+      "within_budget": true
+    }
+  }
+}
